@@ -14,6 +14,8 @@
 						`level` int(3) NOT NULL default '0',
 						`title` varchar(255),
 						`handle` varchar(255),
+						`keywords` varchar(255),
+						`description` TEXT DEFAULT NULL,
 						PRIMARY KEY  (`id`),
 						KEY `lft` (`lft`,`rgt`,`level`)
 					) ENGINE=MyISAM  CHARSET=utf8 COLLATE=utf8_unicode_ci
@@ -38,52 +40,6 @@
 		}
 
 		public function update($previousVersion){
-
-			if(version_compare($previousVersion, '2.0.1', '<')){
-				try{
-
-					$cats = Symphony::Database()->fetch("SELECT `lft`, `title` FROM `tbl_{$this->extension_handle}`");
-
-					if(!empty($cats) && is_array($cats)) foreach($cats as $c){
-						Symphony::Database()->query("UPDATE `tbl_{$this->extension_handle}`
-							SET `handle` = '".$this->getUniqueHandle($c['title'], $c['lft'])."' WHERE `lft` = {$c['lft']}
-						");
-					}
-
-					$fields = Symphony::Database()->fetchCol('field_id',
-						"SELECT `field_id` FROM `tbl_fields_{$this->extension_handle}`"
-					);
-
-					if(!empty($fields) && is_array($fields)) {
-						foreach ($fields as $field_id) {
-
-							Symphony::Database()->query("ALTER TABLE `tbl_entries_data_{$field_id}` CHANGE `handle` `handle` VARCHAR( 255 )");
-							Symphony::Database()->query("ALTER TABLE `tbl_entries_data_{$field_id}` CHANGE `value` `value` VARCHAR( 255 )");
-
-							$data = Symphony::Database()->fetch("
-								SELECT DISTINCT
-									fields.relation_id AS `rel`,
-									cats.handle AS `handle`
-								FROM `tbl_entries_data_{$field_id}` AS `fields`
-								LEFT JOIN `tbl_{$this->extension_handle}` AS `cats` ON fields.relation_id = cats.id
-							");
-
-							if(!empty($data) && is_array($data)) foreach($data as $v){
-								Symphony::Database()->query("UPDATE `tbl_entries_data_{$field_id}`
-									SET `handle` = '{$v['handle']}' WHERE `relation_id` = {$v['rel']}
-								");
-							}
-
-						}
-					}
-
-
-
-				}
-				catch(Exception $e){
-					// Discard
-				}
-			}
 
 			return true;
 
@@ -206,7 +162,9 @@
 								`rgt` = $rgt + 2,
 								`level` = 0,
 								`title` = '" . $this->makeTitle($fields['title']) . "',
-								`handle` = '" . $this->getUniqueHandle($fields['title']) . "'
+								`handle` = '" . $this->getUniqueHandle($fields['title']) . "',
+								`keywords` = '" . $this->makeTitle($fields['keywords']) . "',
+								`description` = '" . $this->makeTitle($fields['description']) . "'
 				");
 
 			} else {
@@ -235,7 +193,9 @@
 							`level` = {$fields['level']} + 1,
 							`parent` = {$fields['parent']},
 							`title` = '" . $this->makeTitle($fields['title']) . "',
-							`handle` = '" . $this->getUniqueHandle($fields['title']) . "'
+							`handle` = '" . $this->getUniqueHandle($fields['title']) . "',
+							`keywords` = '" . $this->makeTitle($fields['keywords']) . "',
+							`description` = '" . $this->makeTitle($fields['description']) . "'
 				");
 
 			}
@@ -245,7 +205,7 @@
 		public function edit($post){
 
 			if(@array_key_exists('update', $post['action'])){
-				return $this->updateCat($post['fields']['lft'], $post['fields']['title']);
+				return $this->updateCat($post['fields']['lft'], $post['fields']['title'], $post['fields']['keywords'], $post['fields']['description']);
 			}
 
 			if(@array_key_exists('edit', $post['action'])){
@@ -276,6 +236,8 @@
 						SET
 							`title` = '" . $this->makeTitle($fields['title']) . "',
 							`handle` = '" . $this->getUniqueHandle($fields['title'], $fields['lft']) . "',
+							`keywords` = '" . $this->makeTitle($fields['keywords']) . "',
+							`description` = '" . $this->makeTitle($fields['description']) . "',
 							`parent` = 0,
 							`lft` = $rgt+1,
 							`level` = 0
@@ -296,6 +258,8 @@
 					SET
 						`title` = '" . $this->makeTitle($fields['title']) . "',
 						`handle` = '" . $this->getUniqueHandle($fields['title'], $fields['lft']) . "',
+						`keywords` = '" . $this->makeTitle($fields['keywords']) . "',
+						`description` = '" . $this->makeTitle($fields['description']) . "',
 						`parent` = {$newp['id']},
 						`lft` = {$newp['rgt']},
 						`level` = {$newp['level']} + 1
@@ -306,12 +270,14 @@
 		}
 
 
-		public function updateCat($lft, $title){
+		public function updateCat($lft, $title, $keywords, $description){
 			return Symphony::Database()->query("
 					UPDATE `tbl_{$this->extension_handle}`
 					SET
 						`title` = '" . $this->makeTitle($title) . "',
-						`handle` = '" . $this->getUniqueHandle($title, $lft) . "'
+						`handle` = '" . $this->getUniqueHandle($title, $lft) . "',
+						`keywords` = '" . $this->makeTitle($fields['keywords']) . "',
+						`description` = '" . $this->makeTitle($fields['description']) . "'
 					WHERE `lft` = $lft
 			");
 		}

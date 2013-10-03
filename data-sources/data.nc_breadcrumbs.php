@@ -21,10 +21,10 @@
 			return array(
 				"name" => __('Nested Categories Breadcrumbs'),
 				"description" => false,
-				"author" => array("name" => "Andrey Lubinov",
-					"email" => "andrey.lubinov@gmail.com"),
-					"version" => "1.0",
-				"release-date" => "2011-11-12",
+				"author" => array("name" => "Александр Бирюков",
+					"email" => "info@alexbirukov.ru"),
+					"version" => "2.1",
+				"release-date" => "2013-10-03",
 			);
 		}
 

@@ -18,3 +18,39 @@ tr td {padding:4px 0 6px}
 .nc-breadcrumbs li {float:left;margin:0 10px 0 0}
 
 input.delete {float:left !important}
+
+.primary, .secondary { padding:0px 18px; }
+
+.nsbutton, .nsbutton:link, .nsbutton:visited, .nsbutton:active, .nsbutton:hover {
+	-webkit-border-bottom-right-radius: 4px !important;
+	-webkit-border-radius: 0px 4px 4px 0px !important;
+	-webkit-border-top-right-radius: 4px !important;
+	-webkit-box-shadow: rgba(0, 0, 0, 0.047) 0px 0px 7px 0px, rgba(77, 120, 180, 0.102) 0px 0px 1px 2px !important;
+	align-content: stretch !important;
+	align-items: stretch !important;
+	align-self: stretch !important;
+	background: #EFEFED linear-gradient(to bottom, #FBFBFA 0px, #FBFBFA 30%, #E3E3DF 100%) !important;
+	border-bottom: 0px #494949 !important;
+	border-left: 1px solid rgba(0, 0, 0, 0.251) !important;
+	border-radius: 0px 4px 4px 0px !important;
+	border-right: 0px #494949 !important;
+	border-top: 0px #494949 !important;
+	box-shadow: rgba(0, 0, 0, 0.047) 0px 0px 7px 0px, rgba(77, 120, 180, 0.102) 0px 0px 1px 2px !important;
+	box-sizing: border-box !important;
+	cursor: pointer !important;
+	display: block !important;
+	float: right !important;
+	height: 20px !important;
+	justify-content: flex-start !important;
+	list-style: none !important;
+	margin: 0px !important;
+	min-height: 20px !important;
+	order: 0 !important;
+	outline: #494949 0px !important;
+	padding: 0px 10px !important;
+	resize: none !important;
+	text-align: center !important;
+	vertical-align: baseline !important;
+	white-space: nowrap !important;
+	width: 113px !important;
+}

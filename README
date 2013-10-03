@@ -1,22 +1,22 @@
 Nested Categories Extension
 ------------------------------------
 
-Version: 2.0.1 beta
-Author: Andrey Lubinov (andrey.lubinov@gmail.com)
-Build Date: 6th June 2010
+Version: 2.1
+Author: Andrey Lubinov (andrey.lubinov@gmail.com), Александр Бирюков (info@alexbirukov.ru)
+Build Date: 03.10.2013
 
 
 [INSTALLATION]
 
 1. Upload the 'nestedcats' folder in this archive to your Symphony 'extensions' folder.
-
 2. Enable it by selecting the "Nested Categories", choose Enable from the with-selected menu, then click Apply.
 
 
 [USAGE]
-- 1. Go to the Categories/Overview and add some categories.
-  2. Append "Nested Categories" field to your section.
-  3. Append "Nested Categories" Data Source to your page (optional).
+
+1. Go to the Categories/Overview and add some categories.
+2. Append "Nested Categories" field to your section.
+3. Append "Nested Categories" Data Source to your page (optional).
 
 - See Data Source's "about" section for example XML output and possible XSL template.
 

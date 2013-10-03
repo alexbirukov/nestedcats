@@ -124,11 +124,17 @@ Class contentExtensionNestedcatsTree extends AdministrationPage{
 			array(NULL, false, __('With Selected...')),
 			array('delete', false, __('EntryPreDelete'))
 		);
+		
+		// Create fieldset wrap
+		$wrapFieldset = new XMLElement('fieldset');
+		$wrapFieldset->setAttribute('class', 'apply');
 
 		$wrapDiv = new XMLElement('div');
 		$wrapDiv->appendChild(Widget::Select('with-selected', $options, array('id' => 'sel')));
-		$wrapDiv->appendChild(Widget::Input('action[apply]', __('Apply'), 'submit'));
-		$tableActions->appendChild($wrapDiv);
+		//$wrapDiv->appendChild(Widget::Input('action[apply]', __('Apply'), 'submit'));
+		$wrapFieldset->appendChild($wrapDiv);
+		$wrapFieldset->appendChild(Widget::Input('action[apply]', __('Apply'), 'submit', array('class'=>'nsbutton')));
+		$tableActions->appendChild($wrapFieldset);
 
 		$notice = new XMLElement('p', __('All nested Categories will be also deleted'));
 		$notice->setAttribute('id', 'note');
@@ -172,15 +178,23 @@ Class contentExtensionNestedcatsTree extends AdministrationPage{
 
 		$this->Form->appendChild($fieldset);
 
-		// Parent Category
+		// Parent
 		$fieldset = new XMLElement('fieldset');
 		$fieldset->setAttribute('class', 'secondary');
 
 		$label = Widget::Label(__('Parent Category'));
-		$select = $this->_driver->buildSelectAtCatsPage(!empty($this->_id) ? $this->_id : $_POST['fields']['parent']);
-		$label->appendChild($select);
-
+		$label->appendChild(Widget::Input((string)Null, $parent['title'] ? $parent['title'] : (string)__('None'), 'text', array('disabled' => 'true')));
 		$fieldset->appendChild($label);
+		
+		// Keywords & Description
+		$label = Widget::Label(__('Keywords'));
+		$label->appendChild(Widget::Input('fields[keywords]', $cat['keywords']));
+		$fieldset->appendChild($label);
+
+		$label = Widget::Label(__('Description'));
+		$label->appendChild(Widget::Input('fields[description]', $cat['description']));
+		$fieldset->appendChild($label);
+		
 		$this->Form->appendChild($fieldset);
 
 		// Submit
@@ -255,11 +269,21 @@ Class contentExtensionNestedcatsTree extends AdministrationPage{
 		$fieldset = new XMLElement('fieldset');
 		$fieldset->setAttribute('class', 'secondary');
 
-		$label = Widget::Label(__('Parent Category'));
-		$select = $this->_driver->buildSelectAtCatsPage($cat['parent'], array('lft' => $cat['lft'], 'rgt' => $cat['rgt']));
-		$label->appendChild($select);
+		$parent = $this->_driver->get($cat['parent']);
 
+		$label = Widget::Label(__('Parent Category'));
+		$label->appendChild(Widget::Input((string)Null, $cat['parent'] == (string)0 ? __('None') : $parent['title'], 'text', array('disabled' => 'true')));
 		$fieldset->appendChild($label);
+		
+		// Keywords & Description
+		$label = Widget::Label(__('Keywords'));
+		$label->appendChild(Widget::Input('fields[keywords]', $cat['keywords']));
+		$fieldset->appendChild($label);
+
+		$label = Widget::Label(__('Description'));
+		$label->appendChild(Widget::Input('fields[description]', $cat['description']));
+		$fieldset->appendChild($label);
+		
 		$this->Form->appendChild($fieldset);
 
 

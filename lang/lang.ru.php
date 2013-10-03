@@ -3,112 +3,133 @@
 	$about = array(
 		'name' => 'Русский',
 		'author' => array(
-			'name' => 'Andrey Lubinov',
-			'email' => 'andrey.lubinov@gmail.com',
-			'website' => false
+			'name' => 'Александр Бирюков',
+			'email' => 'info@alexbirukov.ru',
+			'website' => 'http://alexbirukov.ru'
 		),
-		'release-date' => '2010-06-06'
+		'release-date' => '2013-10-03'
 	);
 
-
-	/*
-	 * EXTENSION: Nested Categories
-	 * Localisation strings
+	/**
+	 * Nested Categories
 	 */
-
 	$dictionary = array(
 
-		'Nested Categories β2' =>
-		'Вложенные категории β2',
-
-		'Categories' =>
-		'Категории',
-
-		'List View' =>
-		'В виде списка',
-
-		'Tree View' =>
-		'В виде дерева',
-
-		'Category updated at %1$s.' =>
-		'Категория обновлена %2$s.',
-
-		'Category deleted' =>
-		'Категория удалена',
-
-		'Category created at %1$s. <a href="%2$s">Create another?</a>' =>
-		'Категория создана %1$s. <a href="%2$s">Создать другую?</a>',
-
-		'Symphony &ndash; Categories &ndash; View' =>
-		'Symphony &ndash; Категории &ndash; Обзор',
-
-		'List' =>
-		'Список',
-
-		'Nested Categories' =>
-		'Вложенные категории',
-
-		'Nested categories' =>
-		'Волженные категории',
-
-		'Full list &#8594;' =>
-		'Полный список &#8594;',
-
-		'To the begining' =>
-		'В начало',
-
-		'Categories: ' =>
-		'Категории: ',
-
-		'Category: ' =>
-		'Категория',
-
-		'Can\'t find category' =>
-		'Невозможно найти такую категорию',
-
-		'All nested Categories will be also deleted' =>
+		'All nested Categories will be also deleted' => 
 		'Все вложенные категории тоже будут удалены',
 
-		'Symphony &ndash; New Category' =>
-		'Symphony &ndash; Новая категория',
+		'Allow selection of multiple options' => 
+		'Разрешить множественный выбор',
 
-		'New Category' =>
-		'Новая категория',
+		'Categories' => 
+		'Категории',
 
-		'Parent Category' =>
-		'Родительская категория',
+		'Categories: ' => 
+		'Категории: ',
 
-		'Symphony &ndash; Edit Category &ndash; ' =>
-		'Symphony &ndash; Редактирование категории &ndash; ',
+		'Category created at %1$s. <a href="%2$s">Create another?</a>' => 
+		'Категория создана %1$s. <a href="%2$s">Создать другую?</a>',
 
-		'Edit Category ' =>
-		'Редактирование категории ',
+		'Category deleted' => 
+		'Категория удалена',
 
-		'Delete this Category' =>
-		'Удалить эту категорию',
+		'Category updated at %1$s.' => 
+		'Категория обновлена %2$s.',
 
-		'View Category: ' =>
-		'Показать категорию: ',
+		'Category: ' => 
+		'Категория',
 
-		'Tree' =>
-		'Дерево',
-
-		'Full Tree &#8594;' =>
-		'Все дерево &#8594;',
-
-		'Full tree' =>
-		'Все дерево',
-
-		'It looks like youre trying to create an entry. Perhaps you want categories first? <br/><a href="%s">Click here to create some.</a>' =>
-		'Похоже, вы пытаетесь создать запись. Вероятно, сначала нужно <a href="%s">добавить несколько категорий?</a>',
-
-		'Choose' =>
+		'Choose' => 
 		'Выбрать',
 
-		'None found' =>
+		'Create' => 
+		'Создать',
+
+		'Delete this Category' => 
+		'Удалить эту категорию',
+
+		'Edit Category ' => 
+		'Редактирование категории ',
+
+		'EntryPreDelete' => 
+		'Удалить записи',
+
+		'Full Tree' => 
+		'Полное дерево',
+
+		'Full Tree &#8594;' => 
+		'Все дерево &#8594;',
+
+		'Full list &#8594;' => 
+		'Полный список &#8594;',
+
+		'Full tree' => 
+		'Все дерево',
+
+		'It looks like youre trying to create a field. Perhaps you want categories first? <br/><a href="%s">Click here to create some.</a>' => 
+		'Похоже, что вы пытаетесь создать поле. Может будет лучше сначала создать категории? <br/><a href="%s">Перейти к созданию категорий.</a>',
+
+		'List' => 
+		'Список',
+
+		'List View' => 
+		'В виде списка',
+
+		'Nested Categories' => 
+		'Вложенные категории',
+
+		'Nested Categories Breadcrumbs' => 
+		'Хлебные крошки',
+
+		'Nested Categories Data Source' => 
+		'Источник данных',
+
+		'Nested categories' => 
+		'Волженные категории',
+
+		'New Category' => 
+		'Новая категория',
+
+		'No data received.' => 
+		'Нет данных.',
+
+		'None found' => 
 		'Ничего не найдено',
 
-		'Root' =>
+		'Parent Category' => 
+		'Родительская категория',
+
+		'Root' => 
 		'Корень',
 
-);
+		'Symphony &ndash; Categories &ndash; View' => 
+		'Symphony &ndash; Категории &ndash; Обзор',
+
+		'Symphony &ndash; Edit Category &ndash; ' => 
+		'Symphony &ndash; Редактирование категории &ndash; ',
+
+		'Symphony &ndash; New Category' => 
+		'Symphony &ndash; Новая категория',
+
+		'Title is a required field' => 
+		'Поле заголовка является обязательным',
+
+		'To the begining' => 
+		'В начало',
+
+		'Tree' => 
+		'Дерево',
+
+		'Tree View' => 
+		'В виде дерева',
+
+		'View Category: ' => 
+		'Показать категорию: ',
+
+		'Can\'t find category' => 
+		'Не удалось найти категорию',
+
+		'Keywords' => 
+		'Ключевые слова',
+
+	);

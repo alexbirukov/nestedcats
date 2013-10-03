@@ -49,10 +49,10 @@ Usage Example:
 			return array(
 				"name" => __('Nested Categories'),
 				"description" => __('Nested Categories Data Source'),
-				"author" => array("name" => "Andrey Lubinov",
-					"email" => "andrey.lubinov@gmail.com"),
-					"version" => "2.0.1",
-				"release-date" => "2010-06-06",
+				"author" => array("name" => "Бирюков Александр",
+					"email" => "info@alexbirukov.ru"),
+					"version" => "2.1",
+				"release-date" => "2013-10-03",
 			);
 		}
 
@@ -72,6 +72,8 @@ Usage Example:
 					array(
 						'id' => $c['id'],
 						'handle' => $c['handle'],
+						'keywords' => $c['keywords'],
+						'description' => $c['description'],
 						'parent-id' => $c['parent'],
 						'level' => $c['level']
 					)

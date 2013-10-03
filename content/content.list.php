@@ -125,11 +125,17 @@
 				array('delete', false, __('EntryPreDelete'))
 			);
 
+			// Create fieldset wrap
+			$wrapFieldset = new XMLElement('fieldset');
+			$wrapFieldset->setAttribute('class', 'apply');
+	
 			$wrapDiv = new XMLElement('div');
 			$wrapDiv->appendChild(Widget::Select('with-selected', $options, array('id' => 'sel')));
-			$wrapDiv->appendChild(Widget::Input('action[apply]', __('Apply'), 'submit'));
-			$tableActions->appendChild($wrapDiv);
-
+			//$wrapDiv->appendChild(Widget::Input('action[apply]', __('Apply'), 'submit'));
+			$wrapFieldset->appendChild($wrapDiv);
+			$wrapFieldset->appendChild(Widget::Input('action[apply]', __('Apply'), 'submit', array('class'=>'nsbutton constructor')));
+			$tableActions->appendChild($wrapFieldset);
+			
 			$notice = new XMLElement('p', __('All nested Categories will be also deleted'));
 			$notice->setAttribute('id', 'note');
 			$notice->setAttribute('class', 'hidden');
@@ -179,9 +185,20 @@
 
 			$label = Widget::Label(__('Parent Category'));
 			$label->appendChild(Widget::Input((string)Null, $parent['title'] ? $parent['title'] : (string)__('None'), 'text', array('disabled' => 'true')));
-
 			$fieldset->appendChild($label);
+			
+			// Keywords & Description
+			$label = Widget::Label(__('Keywords'));
+			$label->appendChild(Widget::Input('fields[keywords]', $cat['keywords']));
+			$fieldset->appendChild($label);
+
+			$label = Widget::Label(__('Description'));
+			$label->appendChild(Widget::Input('fields[description]', $cat['description']));
+			$fieldset->appendChild($label);
+			
 			$this->Form->appendChild($fieldset);
+			
+			
 
 			// Submit
 			$div = new XMLElement('div');
@@ -259,8 +276,17 @@
 
 			$label = Widget::Label(__('Parent Category'));
 			$label->appendChild(Widget::Input((string)Null, $cat['parent'] == (string)0 ? __('None') : $parent['title'], 'text', array('disabled' => 'true')));
-
 			$fieldset->appendChild($label);
+			
+			// Keywords & Description
+			$label = Widget::Label(__('Keywords'));
+			$label->appendChild(Widget::Input('fields[keywords]', $cat['keywords']));
+			$fieldset->appendChild($label);
+
+			$label = Widget::Label(__('Description'));
+			$label->appendChild(Widget::Input('fields[description]', $cat['description']));
+			$fieldset->appendChild($label);
+			
 			$this->Form->appendChild($fieldset);
 
 
