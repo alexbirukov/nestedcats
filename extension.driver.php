@@ -218,7 +218,7 @@
 					if($post['fields']['parent'] == Symphony::Database()->fetchVar("parent", 0, "
 							SELECT `parent` AS `parent` FROM `tbl_{$this->extension_handle}`
 							WHERE `lft` = {$post['fields']['lft']} LIMIT 1
-						")) return $this->updateCat($post['fields']['lft'], $post['fields']['title']);
+						")) return $this->updateCat($post['fields']['lft'], $post['fields']['title'], $post['fields']['keywords'], $post['fields']['description']);
 
 					return $this->move($post['fields']);
 			}

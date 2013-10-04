@@ -264,7 +264,7 @@
 			$fieldset->appendChild(Widget::Input('fields[rgt]', $cat['rgt'], 'hidden'));
 			$fieldset->appendChild(Widget::Input('fields[lft]', $cat['lft'], 'hidden'));
 			$fieldset->appendChild(Widget::Input('fields[id]', $cat['id'], 'hidden'));
-			$label->appendChild(Widget::Input('fields[parent]', $cat['parent'], 'hidden'));
+			$fieldset->appendChild(Widget::Input('fields[parent]', $cat['parent'], 'hidden'));
 
 			$this->Form->appendChild($fieldset);
 
