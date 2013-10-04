@@ -49,9 +49,11 @@ Usage Example:
 			return array(
 				"name" => __('Nested Categories'),
 				"description" => __('Nested Categories Data Source'),
-				"author" => array("name" => "Áèðþêîâ Àëåêñàíäð",
+				"author" => array(
+					"name" => "ÐÐ»ÐµÐºÑÐ°Ð½Ð´Ñ€ Ð‘Ð¸Ñ€ÑŽÐºÐ¾Ð²", 
+					"website" => 'http://alexbirukov.ru',
 					"email" => "info@alexbirukov.ru"),
-					"version" => "2.1",
+				"version" => "2.1",
 				"release-date" => "2013-10-03",
 			);
 		}

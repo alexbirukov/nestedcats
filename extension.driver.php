@@ -41,6 +41,11 @@
 
 		public function update($previousVersion){
 
+			if (version_compare($previousVersion, '2.1', '<')) {
+				// Update to version 2.1:
+				Symphony::Database()->query("ALTER TABLE `tbl_{$this->extension_handle}` ADD `keywords` varchar(255), ADD `description` TEXT DEFAULT NULL;");
+			}
+		
 			return true;
 
 		}
